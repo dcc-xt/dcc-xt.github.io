@@ -8,7 +8,7 @@
       <link href="/2020/08/11/%E8%80%83%E7%A0%94%E8%8B%B1%E8%AF%AD%E4%BD%9C%E6%96%87%E6%A8%A1%E6%9D%BF%EF%BC%88%E4%B8%80%EF%BC%89/"/>
       <url>/2020/08/11/%E8%80%83%E7%A0%94%E8%8B%B1%E8%AF%AD%E4%BD%9C%E6%96%87%E6%A8%A1%E6%9D%BF%EF%BC%88%E4%B8%80%EF%BC%89/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>今天有些晚了，明天继续更新………..</p>]]></content>
       
       
       <categories>
@@ -57,42 +57,20 @@
     
     
     <entry>
+      <title>The Story of Us</title>
+      <link href="/WE/index.html"/>
+      <url>/WE/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>分类</title>
       <link href="/categories/index.html"/>
       <url>/categories/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>友情链接</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>留言板</title>
-      <link href="/comments/index.html"/>
-      <url>/comments/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -112,9 +90,9 @@
     
     
     <entry>
-      <title>The Story of Us</title>
-      <link href="/WE/index.html"/>
-      <url>/WE/index.html</url>
+      <title>友情链接</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -126,6 +104,17 @@
       <title>此部分在未开放，敬请期待.....</title>
       <link href="/photo/index.html"/>
       <url>/photo/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
