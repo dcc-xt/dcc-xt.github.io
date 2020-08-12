@@ -82,9 +82,9 @@
     
     
     <entry>
-      <title>The Story of Us</title>
-      <link href="/WE/index.html"/>
-      <url>/WE/index.html</url>
+      <title>Itroduction</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -93,9 +93,9 @@
     
     
     <entry>
-      <title>Itroduction</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
+      <title>The Story of Us</title>
+      <link href="/WE/index.html"/>
+      <url>/WE/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
