@@ -215,8 +215,7 @@ hr:before,
 #article-container.post-content h4:before,
 #article-container.post-content h5:before,
 #article-container.post-content h6:before,
-#article-container .post-outdate-notice:before,
-.note:not(.no-icon)::before {
+#article-container .post-outdate-notice:before {
   display: inline-block;
   font-weight: 600;
   font-style: normal;
@@ -4921,7 +4920,7 @@ blockquote.pullquote.right {
 .note h4,
 .note h5,
 .note h6 {
-  margin-top: 3px;
+  margin-top: 0;
   margin-bottom: 0;
   padding-top: 0 !important;
   border-bottom: initial;
@@ -4947,15 +4946,6 @@ blockquote.pullquote.right {
 .note code {
   background: rgba(27,31,35,0.05) !important;
 }
-.note:not(.no-icon) {
-  padding-left: 45px;
-}
-.note:not(.no-icon)::before {
-  position: absolute;
-  top: 13px;
-  left: 15px;
-  font-size: larger;
-}
 .note.default {
   border-color: #e1e1e1;
   background: #f3f3f3;
@@ -4966,9 +4956,6 @@ blockquote.pullquote.right {
 }
 .note.default a:not(.btn):hover {
   color: #454545;
-}
-.note.default:not(.no-icon)::before {
-  content: '\f0a9';
 }
 .note.primary {
   border-color: #e1c2ff;
@@ -4981,9 +4968,6 @@ blockquote.pullquote.right {
 .note.primary a:not(.btn):hover {
   color: #453298;
 }
-.note.primary:not(.no-icon)::before {
-  content: '\f055';
-}
 .note.info {
   border-color: #b3e5ef;
   background: #d9edf7;
@@ -4994,9 +4978,6 @@ blockquote.pullquote.right {
 }
 .note.info a:not(.btn):hover {
   color: #215761;
-}
-.note.info:not(.no-icon)::before {
-  content: '\f05a';
 }
 .note.success {
   border-color: #d0e6be;
@@ -5009,9 +4990,6 @@ blockquote.pullquote.right {
 .note.success a:not(.btn):hover {
   color: #32562c;
 }
-.note.success:not(.no-icon)::before {
-  content: '\f058';
-}
 .note.warning {
   border-color: #fae4cd;
   background: #fcf4e3;
@@ -5023,9 +5001,6 @@ blockquote.pullquote.right {
 .note.warning a:not(.btn):hover {
   color: #714f30;
 }
-.note.warning:not(.no-icon)::before {
-  content: '\f06a';
-}
 .note.danger {
   border-color: #ebcdd2;
   background: #f2dfdf;
@@ -5036,9 +5011,6 @@ blockquote.pullquote.right {
 }
 .note.danger a:not(.btn):hover {
   color: #84333f;
-}
-.note.danger:not(.no-icon)::before {
-  content: '\f056';
 }
 #article-container .tabs {
   position: relative;
