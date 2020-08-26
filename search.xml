@@ -4,11 +4,36 @@
   
     
     <entry>
+      <title>八人抢答器</title>
+      <link href="/2020/08/26/%E5%85%AB%E8%B7%AF%E6%8A%A2%E7%AD%94%E5%99%A8/"/>
+      <url>/2020/08/26/%E5%85%AB%E8%B7%AF%E6%8A%A2%E7%AD%94%E5%99%A8/</url>
+      
+        <content type="html"><![CDATA[<p>用Protues软件设计了一个八人抢答器，之前用Multisim设计了一下，但是感觉软件操作上没有Protues方便。八人抢答器就是八个人，谁先按下开关，数码管就会显示几号数字，其余人再按下开关显示的数字仍然不变，只有复位开关再次按下的时候，才可以继续抢答，主要用到的是4511芯片来驱动数码管点亮，第一步需要了解4511芯片的功能，可以去官网上下载一下芯片的数据手册，从而了解芯片的一些功能。</p><h1 id="芯片介绍"><a href="#芯片介绍" class="headerlink" title="芯片介绍"></a>芯片介绍</h1><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/8.2.png" alt="4511芯片"></p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/8.1.png" alt="4511芯片功能表"></p><p>从功能表中可以看出，ABCD为从低位到高位的输入，输入的是8421BCD码，输出显示0-9，LT等于1时，输出显示8，这就代表测试选通断，所以在应用时不需要测试，就要把LT接低电平（LT非接高电平）。BI端接高电平时，没有输出显示，此时代表消隐，所以在用时需要将此端接入低电平。LE只有接在低电平时，才能正常显示，若接在高电平，则锁定输出。还需要注意的是此芯片345脚的优先级是测试&gt;消隐&gt;锁存。</p><h1 id="电路连接"><a href="#电路连接" class="headerlink" title="电路连接"></a>电路连接</h1><p>将4511芯片与数码管相连，这里用的是共阴极数码管，ABCD为从低位到高位的输入，从0000-0001依次表示0-8，abcdefgh是否为高电平决定数码管某一位是否点亮。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/8.3.png" alt="八人抢答器总体电路"></p><p>首先要考虑的是点亮数码管，点亮数码管较简单，将ABCD某一位置成高电平，abcdefgh就会按其对应的十进制置成相应的高电平，数码管即可显示想要的数字，但是将8个开关接入电路，要想不输出错误，就得接入二极管，这里巧妙地应用了二极管的单向导电性。</p><p>电路的核心部分就是显示锁存，需要显示的数字是0-8，观察这些数字，除了1和7，其余每一个数字中g都是高电平，而1和7中d/e/f都是低电平，所以利用这个来进行锁存显示，也就是说将g和d/e/f中的一个取非然后相或，这样就可以锁存显示了，然后利用此芯片345脚的优先级是测试&gt;消隐&gt;锁存这个特点，将复位开关接在消隐引脚，从而实现复位效果。这里需要注意三极管的接法。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/8.4.png" alt="八人抢答器总体电路"></p><h1 id="思考总结"><a href="#思考总结" class="headerlink" title="思考总结"></a>思考总结</h1><p>以上电路在锁存中取反和相或都是用的电子元件，利用二极管三极管的特性，同时也可以用逻辑门来实现，如果都用与非门来实现（只用一种门），也是可以达到同样的效果的。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/8.5.png" alt="八人抢答器总体电路"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 电路 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 电路设计 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Altium Designer 绘板</title>
       <link href="/2020/08/15/Altium%20Designer%20%E7%BB%98%E6%9D%BF/"/>
       <url>/2020/08/15/Altium%20Designer%20%E7%BB%98%E6%9D%BF/</url>
       
-        <content type="html"><![CDATA[<p><strong>绘制了一个51单片机的最小系统，自己焊板子的话，成本貌似会低很多。本次绘制用的是Altium Designer 20版本，单片机最小系统元器件不多，相对来说较简单。单片机最小系统包括：复位模块、电源模块和晶振模块， 把这三个部分搭建好，这个单片机就可以运行了， 运行后你再用单片机的控制端口去控制其它东西的可以了。用Altium Designer绘制单片机最小系统需要先画出电路图，在此之前需要画出每个元件（或者导入元件库），然后把元件连接成电路图，之后给每个元件添加封装，之后就可以导入到PCB中，确定板子的尺寸，然后将器件摆放好，进行布线、铺铜等操作，最后输出Gerber文件。</strong></p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/51.0.png" alt="51单片机最小系统3D图"></p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/51.1.jpg" alt="51单片机最小系统3D图"></p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/51.2.jpg" alt="51单片机最小系统"></p><p>绘制过程中也遇到了一些小问题，比如在添加缝合过孔时，出现了如下情况：</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/51.3.png"></p><p>这个问题是无法在网络GND上找到任何合适的位置，在确保添加缝合孔的步骤没问题之后，重新铺铜，之后再添加，但是还是无法添加，最后发现是铺铜时的网络没有选对，在铺铜时可以按一下Tab键，网络选择GND，这样再添加过孔就可以了。</p><p>还有需要注意的就是在铺铜完成后，如果把铺铜隐藏了，这时在继续铺铜，检查时会报错，只是需要在铺铜管理器里把之前的铜全删掉，然后再重新铺铜。</p><p>在绘制完成之后，按规则检查时，又发生了报错，说这里不符合走线规则。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/51.4.png"></p><p>这里的红线和蓝线是两个板层，想把这两个线连接起来，需要用过孔，注意这里要添加VCC过孔。</p>]]></content>
+        <content type="html"><![CDATA[<p><strong>绘制了一个51单片机的最小系统，自己焊板子的话，成本貌似会低很多。本次绘制用的是Altium Designer 20版本，单片机最小系统元器件不多，相对来说较简单。单片机最小系统包括：复位模块、电源模块和晶振模块， 把这三个部分搭建好，这个单片机就可以运行了， 运行后你再用单片机的控制端口去控制其它东西的可以了。用Altium Designer绘制单片机最小系统需要先画出电路图，在此之前需要画出每个元件（或者导入元件库），然后把元件连接成电路图，之后给每个元件添加封装，之后就可以导入到PCB中，确定板子的尺寸，然后将器件摆放好，进行布线、铺铜等操作，最后输出Gerber文件。</strong></p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/51.0.png" alt="51单片机最小系统电路图"></p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/51.1.jpg" alt="51单片机最小系统3D图"></p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/51.2.jpg" alt="51单片机最小系统"></p><p>绘制过程中也遇到了一些小问题，比如在添加缝合过孔时，出现了如下情况：</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/51.3.png"></p><p>这个问题是无法在网络GND上找到任何合适的位置，在确保添加缝合孔的步骤没问题之后，重新铺铜，之后再添加，但是还是无法添加，最后发现是铺铜时的网络没有选对，在铺铜时可以按一下Tab键，网络选择GND，这样再添加过孔就可以了。</p><p>还有需要注意的就是在铺铜完成后，如果把铺铜隐藏了，这时在继续铺铜，检查时会报错，只是需要在铺铜管理器里把之前的铜全删掉，然后再重新铺铜。</p><p>在绘制完成之后，按规则检查时，又发生了报错，说这里不符合走线规则。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/51.4.png"></p><p>这里的红线和蓝线是两个板层，想把这两个线连接起来，需要用过孔，注意这里要添加VCC过孔。</p>]]></content>
       
       
       <categories>
