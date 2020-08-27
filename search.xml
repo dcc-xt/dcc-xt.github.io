@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>自动巡回检测报警电路</title>
+      <link href="/2020/08/27/%E8%87%AA%E5%8A%A8%E5%B7%A1%E5%9B%9E%E6%A3%80%E6%B5%8B%E6%8A%A5%E8%AD%A6%E7%94%B5%E8%B7%AF/"/>
+      <url>/2020/08/27/%E8%87%AA%E5%8A%A8%E5%B7%A1%E5%9B%9E%E6%A3%80%E6%B5%8B%E6%8A%A5%E8%AD%A6%E7%94%B5%E8%B7%AF/</url>
+      
+        <content type="html"><![CDATA[<p><strong>流水灯用单片机实现只需要几行代码，要是用电路设计的话，稍微复杂一些，主要应用的是555芯片和4017芯片，实现了小灯自动流水的功能。</strong></p><h1 id="芯片介绍"><a href="#芯片介绍" class="headerlink" title="芯片介绍"></a>芯片介绍</h1><p>电路设计主要应用了555芯片和4017芯片，555芯片功能非常强大，他可以连接成施密特触发器、单稳态触发器、多谐振荡器等等，这里用到的是555构成的多谐振荡器，可以自动输出矩形脉冲，为了可以控制小灯流水速度，这里做成了占空比可调的多谐振荡器，即调节滑动变阻器阻值就可以控制555输出脉冲的高电平时间，555芯片的相关功能和输出脉冲的周期时间计算可以看一下数字电路的课本。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/8.8.jpg" alt="555芯片"></p><p>4017芯片从他的数据手册上可以看出它是一个十进制计数器，其中E是使能端，CLK是输入的时钟脉冲信号，Q0-Q9为计数输出，CO为进位输出。也就是当有一个时钟信号输入时，Q0输出高电平，其余的输出低电平，当两个时钟信号输入时，Q1输出高电平，其余输出低电平，以此类推，当Q9输出高电平后，下一个时钟信号到来时，Q0输出高电平，同时CO输出高电平，表示此时有进位输出。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/8.9.jpg" alt="4017芯片"></p><h1 id="电路连接"><a href="#电路连接" class="headerlink" title="电路连接"></a>电路连接</h1><p>将555定时器输出的矩形波接到4017的输入端，这样4017就有了计数方波，但是这里需要注意的是在555输出端应该接个下拉电阻，否则在仿真的时候会报错。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/8.10.jpg" alt="流水灯电路"></p><h1 id="电路拓展"><a href="#电路拓展" class="headerlink" title="电路拓展"></a>电路拓展</h1><p>将555、4511、4017一起使用，可使数码管循环显示一连串数字，比如我想显示5201314，连接电路如下：</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/8.11.jpg" alt="流水灯扩展电路"></p><p>这里用到了两个4017芯片，如果只用一个芯片的话，高电平输出到4511时，似乎电压不够，大概只有2点几伏，无法点亮数码管，如采用三极管放大电压，电路可能更繁琐，我直接用两个芯片，但是这里的上电复位好像有点小问题，仿真的时候刚一上电从第二个LED开始点亮，刚上电时电容相当于短路，正来说应该是立即复位，这个问题还有待研究。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 电路 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 电路设计 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>流水灯电路设计</title>
       <link href="/2020/08/26/%E6%B5%81%E6%B0%B4%E7%81%AF%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/"/>
       <url>/2020/08/26/%E6%B5%81%E6%B0%B4%E7%81%AF%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/</url>
@@ -58,7 +83,7 @@
       <link href="/2020/08/15/Altium%20Designer%20%E7%BB%98%E6%9D%BF/"/>
       <url>/2020/08/15/Altium%20Designer%20%E7%BB%98%E6%9D%BF/</url>
       
-        <content type="html"><![CDATA[<p><strong>绘制了一个51单片机的最小系统，自己焊板子的话，成本貌似会低很多。本次绘制用的是Altium Designer 20版本，单片机最小系统元器件不多，相对来说较简单。单片机最小系统包括：复位模块、电源模块和晶振模块， 把这三个部分搭建好，这个单片机就可以运行了， 运行后你再用单片机的控制端口去控制其它东西的可以了。用Altium Designer绘制单片机最小系统需要先画出电路图，在此之前需要画出每个元件（或者导入元件库），然后把元件连接成电路图，之后给每个元件添加封装，之后就可以导入到PCB中，确定板子的尺寸，然后将器件摆放好，进行布线、铺铜等操作，最后输出Gerber文件。</strong></p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/51.0.png" alt="51单片机最小系统电路图"></p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/51.1.jpg" alt="51单片机最小系统3D图"></p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/51.2.jpg" alt="51单片机最小系统"></p><p>绘制过程中也遇到了一些小问题，比如在添加缝合过孔时，出现了如下情况：</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/51.3.png"></p><p>这个问题是无法在网络GND上找到任何合适的位置，在确保添加缝合孔的步骤没问题之后，重新铺铜，之后再添加，但是还是无法添加，最后发现是铺铜时的网络没有选对，在铺铜时可以按一下Tab键，网络选择GND，这样再添加过孔就可以了。</p><p>还有需要注意的就是在铺铜完成后，如果把铺铜隐藏了，这时在继续铺铜，检查时会报错，只是需要在铺铜管理器里把之前的铜全删掉，然后再重新铺铜。</p><p>在绘制完成之后，按规则检查时，又发生了报错，说这里不符合走线规则。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/51.4.png"></p><p>这里的红线和蓝线是两个板层，想把这两个线连接起来，需要用过孔，注意这里要添加VCC过孔。</p>]]></content>
+        <content type="html"><![CDATA[<p><strong>绘制了一个51单片机的最小系统，本次绘制用的是Altium Designer 20版本，单片机最小系统元器件不多，相对来说较简单。单片机最小系统包括：复位模块、电源模块和晶振模块， 把这三个部分搭建好，这个单片机就可以运行了， 运行后你再用单片机的控制端口去控制其它东西的可以了。用Altium Designer绘制单片机最小系统需要先画出电路图，在此之前需要画出每个元件（或者导入元件库），然后把元件连接成电路图，之后给每个元件添加封装，之后就可以导入到PCB中，确定板子的尺寸，然后将器件摆放好，进行布线、铺铜等操作，最后输出Gerber文件。</strong></p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/51.0.png" alt="51单片机最小系统电路图"></p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/51.1.jpg" alt="51单片机最小系统3D图"></p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/51.2.jpg" alt="51单片机最小系统"></p><p>绘制过程中也遇到了一些小问题，比如在添加缝合过孔时，出现了如下情况：</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/51.3.png"></p><p>这个问题是无法在网络GND上找到任何合适的位置，在确保添加缝合孔的步骤没问题之后，重新铺铜，之后再添加，但是还是无法添加，最后发现是铺铜时的网络没有选对，在铺铜时可以按一下Tab键，网络选择GND，这样再添加过孔就可以了。</p><p>还有需要注意的就是在铺铜完成后，如果把铺铜隐藏了，这时在继续铺铜，检查时会报错，只是需要在铺铜管理器里把之前的铜全删掉，然后再重新铺铜。</p><p>在绘制完成之后，按规则检查时，又发生了报错，说这里不符合走线规则。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/51.4.png"></p><p>这里的红线和蓝线是两个板层，想把这两个线连接起来，需要用过孔，注意这里要添加VCC过孔。</p>]]></content>
       
       
       <categories>
