@@ -4,11 +4,36 @@
   
     
     <entry>
+      <title>产生脉冲电路</title>
+      <link href="/2020/08/28/%E4%BA%A7%E7%94%9F%E8%84%89%E5%86%B2%E7%94%B5%E8%B7%AF/"/>
+      <url>/2020/08/28/%E4%BA%A7%E7%94%9F%E8%84%89%E5%86%B2%E7%94%B5%E8%B7%AF/</url>
+      
+        <content type="html"><![CDATA[<p><strong>脉冲产生电路在电路设计中经常使用，产生脉冲电路的形式也有很多现在介绍几种电路连接方法。</strong></p><h1 id="产生脉冲电路一"><a href="#产生脉冲电路一" class="headerlink" title="产生脉冲电路一"></a>产生脉冲电路一</h1><p>第一种就是555构成的多谐振荡器，多谐振荡器没有稳定状态，并且可以自动输出矩形脉冲，他产生脉冲的时间周期可调，也可做成占空比可调的多谐振荡器。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/2.11.jpg" alt="脉冲产生电路"></p><p>工作原理就是利用电容的充放电，脉冲周期就是充电时间加上放电时间，*<em>T=0.7(R1+2R2)<em>C2</em></em>，555内部结构及时间周期的推导过程详见数电课本，在充电时电流从电源VCC经过电阻R1和R2向电容C2充电，放电时电流从电流经过R2流向555的7引脚。</p><h1 id="产生脉冲电路二"><a href="#产生脉冲电路二" class="headerlink" title="产生脉冲电路二"></a>产生脉冲电路二</h1><p>下图的脉冲产生电路是用两个反相器组成，结构较简单，工作原理也是是利用电容的充放电，*<em>T=2.2R4</em>C3**。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/2.10.jpg" alt="脉冲产生电路"></p><p>初始状态电路电平情况如下：</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/2.12.jpg" alt="脉冲产生电路"></p><p>OUT处的高电平电压经过C3和R4到达低电平，此时电容充电，放电时所有点位状态完全相反。在实际电路焊接时可以把非门换成与非门，效果是一样的。但是在仿真时，应在R3处通过开关下接一个地，目的是手动输入一个低电平信号，因为在仿真时无法产生自激振荡，实际焊接时不需要。</p><h1 id="产生脉冲电路三"><a href="#产生脉冲电路三" class="headerlink" title="产生脉冲电路三"></a>产生脉冲电路三</h1><p>接下来的脉冲产生电路是由两个三极管搭建而成：</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/2.13.jpg" alt="脉冲产生电路"></p><p>上电后，电路状态如下：</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/2.14.jpg" alt="脉冲产生电路"></p><p>此时电容充电，由于电容两端没有电压差，所以第一个三极管导通，第二个三极管截止，输出高电平，输出端又通过电容引回第一个三极管的基集，使得电路状态发生改变，电容开始放电，循环往复，这样电路就可以自己产生高低电平的脉冲了，同样，在仿真的的时候，要手动添加一个初始信号，否则电路无法自己产生震荡。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 电路 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 电路设计 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>抢答倒计时计数器</title>
       <link href="/2020/08/28/%E6%8A%A2%E7%AD%94%E5%80%92%E8%AE%A1%E6%97%B6%E8%AE%A1%E6%95%B0%E5%99%A8/"/>
       <url>/2020/08/28/%E6%8A%A2%E7%AD%94%E5%80%92%E8%AE%A1%E6%97%B6%E8%AE%A1%E6%95%B0%E5%99%A8/</url>
       
-        <content type="html"><![CDATA[<p><strong>抢答倒计时计数器主要是应用在选手抢答时进行倒计时，设置10秒钟时间，9-0，当选手按下抢答器，倒计时时间停止，如果在倒计时时间内没有选手作答，倒计时显示到0时，倒计时结束。</strong></p><h1 id="器件介绍"><a href="#器件介绍" class="headerlink" title="器件介绍"></a>器件介绍</h1><p>本次电路设计用到了一个新的芯片40110，这个芯片可进行加减计数，其真值表如下：</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/3.0.jpg" alt="40110真值表"></p><p>真值表很直观，不进行过多赘述，但是需要注意的是4引脚和6引脚的区别，4引脚和6引脚都具有锁存显示功能，但是他们最大的区别是：4引脚锁存显示时，内部计数停止，而6引脚锁存显示时，内部计数仍然继续，这两个引脚的使用对电路的功能影响还是很大的。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/3.2.jpg" alt="40110芯片"></p><h1 id="电路连接"><a href="#电路连接" class="headerlink" title="电路连接"></a>电路连接</h1><p>电路主要成三个部分，第一部分是前边介绍的八人抢答器，第二部分是数码管倒计时显示，第三部分是按下开关显示锁存，根据40110芯片功能，4引脚输入低电平时是允许计数，高电平时显示暂停，所以这里用到一个继电器，当由高电平触发时，继电器开关变化，从而引起4引脚处电平发生变化，5引脚处还是常见的上电复位电路，加了一个开关，可以手动复位。为了实现选手按下时，倒计时锁存，以及倒计时显示到0时，显示器自动停止，这里用的是与非逻辑门，其中倒计时电路显示0是自动锁存，观察数字0-9的特点，逻辑表达式应该是G取反与E，当选手按下开关时，倒计时显示器自动停止，他的逻辑表达式是应该是刚才的逻辑表达式取反，因为选手里没有0号，但是两组与非门接入的引脚不是同一部分电路，注意区别。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/3.1.jpg" alt="整体电路"></p><p>焊接电路可以用洞洞板，然后自己买元器件自行连接电路，也可以使用Altium Designer自己画板子，然后自己焊接。</p><h1 id="电路拓展"><a href="#电路拓展" class="headerlink" title="电路拓展"></a>电路拓展</h1>]]></content>
+        <content type="html"><![CDATA[<p><strong>抢答倒计时计数器主要是应用在选手抢答时进行倒计时，设置10秒钟时间，9-0，当选手按下抢答器，倒计时时间停止，如果在倒计时时间内没有选手作答，倒计时显示到0时，倒计时结束。</strong></p><h1 id="器件介绍"><a href="#器件介绍" class="headerlink" title="器件介绍"></a>器件介绍</h1><p>本次电路设计用到了一个新的芯片40110，这个芯片可进行加减计数，其真值表如下：</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/3.0.jpg" alt="40110真值表"></p><p>真值表很直观，不进行过多赘述，但是需要注意的是4引脚和6引脚的区别，4引脚和6引脚都具有锁存显示功能，但是他们最大的区别是：4引脚锁存显示时，内部计数停止，而6引脚锁存显示时，内部计数仍然继续，这两个引脚的使用对电路的功能影响还是很大的。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/3.2.jpg" alt="40110芯片"></p><h1 id="电路连接"><a href="#电路连接" class="headerlink" title="电路连接"></a>电路连接</h1><p>电路主要成三个部分，第一部分是前边介绍的八人抢答器，第二部分是数码管倒计时显示，第三部分是按下开关显示锁存，根据40110芯片功能，4引脚输入低电平时是允许计数，高电平时显示暂停，所以这里用到一个继电器，当由高电平触发时，继电器开关变化，从而引起4引脚处电平发生变化，5引脚处还是常见的上电复位电路，加了一个开关，可以手动复位。为了实现选手按下时，倒计时锁存，以及倒计时显示到0时，显示器自动停止，这里用的是与非逻辑门，其中倒计时电路显示0是自动锁存，观察数字0-9的特点，逻辑表达式应该是G取反与E，当选手按下开关时，倒计时显示器自动停止，他的逻辑表达式是应该是刚才的逻辑表达式取反，因为选手里没有0号，但是两组与非门接入的引脚不是同一部分电路，注意区别。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/3.1.jpg" alt="整体电路"></p><p>焊接电路可以用洞洞板，然后自己买元器件自行连接电路，也可以使用Altium Designer自己画板子，然后自己焊接。</p>]]></content>
       
       
       <categories>
