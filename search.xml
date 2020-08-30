@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>叮咚门铃和电子琴</title>
+      <link href="/2020/08/30/%E5%8F%AE%E5%92%9A%E9%97%A8%E9%93%83%E5%92%8C%E7%94%B5%E5%AD%90%E7%90%B4/"/>
+      <url>/2020/08/30/%E5%8F%AE%E5%92%9A%E9%97%A8%E9%93%83%E5%92%8C%E7%94%B5%E5%AD%90%E7%90%B4/</url>
+      
+        <content type="html"><![CDATA[<p><strong>设计了一个叮咚门铃和电子琴电路，原理非常简单，都有利用555构成的多谐振荡器搭建的。</strong></p><h1 id="叮咚门铃"><a href="#叮咚门铃" class="headerlink" title="叮咚门铃"></a>叮咚门铃</h1><p>叮咚门铃应用多谐振荡器，蜂鸣器采用无源蜂鸣器，即蜂鸣器内部没有震荡源，输入脉冲频率越高，蜂鸣器发出的音调越高，输入脉冲的频率越低，蜂鸣器发出声音的音调越低，调节多谐振荡器的时钟周期，即可得到不同音调的声音。松开按键是，蜂鸣器仍然发出声响，主要是应用了延时电路。</p><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/%E5%8F%AE%E5%92%9A%E9%97%A8%E9%93%83.png" alt="叮咚门铃电路"></p><h1 id="电子琴"><a href="#电子琴" class="headerlink" title="电子琴"></a>电子琴</h1><p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/dcc-xt/blog-img/%E7%94%B5%E5%AD%90%E7%90%B4.png" alt="电子琴"></p><p>用开关来当电子琴键盘，按下开关改变多谐振荡器的输出脉冲频率来改变蜂鸣器发出的声响，按照图中的电阻值配置，声音大致相似，主要是焊接时用的都是标准的阻值的电阻，所以声音略有误差，可以计算出准确阻值，然后通过滑动变阻器调节到算出来的阻值，这样的话声音效果更好，但是非常麻烦。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 电路 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 电路设计 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>电子时钟电路设计</title>
       <link href="/2020/08/29/%E7%94%B5%E5%AD%90%E6%97%B6%E9%92%9F%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/"/>
       <url>/2020/08/29/%E7%94%B5%E5%AD%90%E6%97%B6%E9%92%9F%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/</url>
